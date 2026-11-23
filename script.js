@@ -1,4 +1,4 @@
-// CCT360 Lab 6 — Evergreen
+// CCT360 - Evergreen
 // Weather data for Hoh Rain Forest, Washington 
 const apiURL = "https://api.open-meteo.com/v1/forecast?latitude=47.860862&longitude=-123.934792&current=temperature_2m,cloud_cover,rain,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum&timezone=America%2FLos_Angeles&forecast_days=3";
 const el = (id) => document.getElementById(id);
