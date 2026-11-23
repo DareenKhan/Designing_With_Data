@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101e19">
+  <meta name="description" content="A living forest scene shaped by live weather data for Hoh Rain Forest.">
+  <title>Evergreen — A Living Weather Experience</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- The three images: JavaScript chooses the live scene. -->
+  <div class="landscape" aria-hidden="true">
+    <div class="scene scene-sunny is-visible" id="scene-sunny"></div>
+    <div class="scene scene-cloudy" id="scene-cloudy"></div>
+    <div class="scene scene-rainy" id="scene-rainy"></div>
+    <div class="weather-shade"></div>
+    <div class="sun-glow"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Evergreen home">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 42 42" fill="none"><path d="M21 4 9 24h7L9 35h24l-7-11h7L21 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M21 17v22" stroke="currentColor" stroke-width="1.5"/></svg>
+        </span>
+        <span class="brand-text">EVERGREEN <small>WEATHER STUDIO</small></span>
+      </a>
+      <div class="top-right">
+        <div class="location"><span class="location-dot" aria-hidden="true"></span> HOH RAIN FOREST, WASHINGTON</div>
+        <div class="data-status" id="data-status" role="status">Connecting to weather…</div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="story">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE WEB IN REAL TIME <span class="issue">/ 001</span></div>
+        <h1>Where the<br><em>weather</em> lives.</h1>
+        <p class="story-description">One forest. Three moods. An ever-changing landscape shaped by the weather over Hoh Rain Forest.</p>
+        <div class="story-condition">
+          <span class="condition-icon" id="condition-icon" aria-hidden="true">☀</span>
+          <div>
+            <span class="micro-label">OUTSIDE RIGHT NOW</span>
+            <strong id="scene-description">Looking to the skies…</strong>
+          </div>
+        </div>
+      </div>
+
+      <section class="weather-card" aria-labelledby="weather-card-title">
+        <div class="card-heading">
+          <div><span class="micro-label">A WINDOW INTO THE FOREST</span><h2 id="weather-card-title">Current weather</h2></div>
+          <span class="live-label"><span aria-hidden="true"></span> LIVE</span>
+        </div>
+
+        <div class="temperature-block">
+          <div class="temperature"><span id="temperature">--</span><sup>°C</sup></div>
+          <div class="weather-summary"><strong id="condition-text">Loading weather…</strong><span id="updated-time">Forest local time</span></div>
+        </div>
+
+        <div class="weather-stats">
+          <div><span class="micro-label">CLOUD COVER</span><strong id="cloud-cover">--%</strong></div>
+          <div><span class="micro-label">RAINFALL</span><strong id="rain">-- mm</strong></div>
+          <div><span class="micro-label">DAYLIGHT</span><strong id="sun-status">--</strong></div>
+        </div>
+
+        <div class="forest-mood">
+          <span class="micro-label">THE FOREST RESPONDS</span>
+          <p id="mood-description">The atmosphere will change with live weather data.</p>
+        </div>
+
+        <div class="action-buttons">
+          <button class="action-btn" id="tomorrow-btn" type="button" aria-expanded="false" aria-controls="details">
+            <span>Tomorrow's forecast</span><span aria-hidden="true">↗</span>
+          </button>
+          <button class="action-btn" id="cloud-btn" type="button" aria-expanded="false" aria-controls="details">
+            <span>Cloud coverage today</span><span aria-hidden="true">↗</span>
+          </button>
+        </div>
+
+        <section class="details" id="details" aria-live="polite" hidden>
+          <div class="details-top"><span class="micro-label" id="detail-title">FORECAST</span><button id="close-details" type="button" aria-label="Close details">×</button></div>
+          <div id="detail-content"></div>
+        </section>
+
+        <div class="scene-controls">
+          <span class="micro-label">EXPLORE FOREST MOODS</span>
+          <div class="scene-buttons" aria-label="Forest scene preview">
+            <button type="button" class="scene-btn active" data-scene="live" aria-pressed="true">Live</button>
+            <button type="button" class="scene-btn" data-scene="sunny" aria-pressed="false">Sun</button>
+            <button type="button" class="scene-btn" data-scene="cloudy" aria-pressed="false">Clouds</button>
+            <button type="button" class="scene-btn" data-scene="rainy" aria-pressed="false">Rain</button>
+          </div>
+          <p class="scene-hint" id="scene-hint">Scene follows the live weather.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bottom-bar">
+      <div class="sound-control">
+        <div class="sound-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="sound-title"><strong>Rain ambience</strong><span id="sound-caption">Rain plays when the forest is rainy</span></div>
+        <button class="sound-toggle" id="sound-btn" type="button" aria-pressed="false">Play sound ♫</button>
+        <audio id="rain-audio" src="audio/rain.mp3" preload="auto" loop></audio>
+        <div class="volume-control"><label for="volume">Volume</label><input id="volume" type="range" min="0" max="100" value="50"><output id="volume-value" for="volume">50%</output></div>
+      </div>
+      <div class="footer-right"><span class="source-note">FOREST-AREA FORECAST BY <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">OPEN-METEO ↗</a></span></div>
+    </footer>
+  </div>
+</body>
+</html>
